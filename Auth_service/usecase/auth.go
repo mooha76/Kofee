@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	client "github.com/mooha76/GoGrpcAuth/client/interface"
-	domain "github.com/mooha76/GoGrpcAuth/model"
+	client "github.com/mooha76/Kofee/client/interface"
+	domain "github.com/mooha76/Kofee/model"
 
-	interfaces "github.com/mooha76/GoGrpcAuth/usecase/interface"
-	"github.com/mooha76/GoGrpcAuth/utils"
+	interfaces "github.com/mooha76/Kofee/usecase/interface"
+	"github.com/mooha76/Kofee/utils"
 )
 
 type authUsecase struct {

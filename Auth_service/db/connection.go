@@ -3,8 +3,8 @@ package db
 import (
 	"fmt"
 
-	"github.com/mooha76/GoGrpcAuth/config"
-	model "github.com/mooha76/GoGrpcAuth/model"
+	"github.com/mooha76/Kofee/config"
+	model "github.com/mooha76/Kofee/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

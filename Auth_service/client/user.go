@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	interfaces "github.com/mooha76/GoGrpcAuth/client/interface"
-	"github.com/mooha76/GoGrpcAuth/config"
-	domain "github.com/mooha76/GoGrpcAuth/model"
-	"github.com/mooha76/GoGrpcAuth/pb"
+	interfaces "github.com/mooha76/Kofee/client/interface"
+	"github.com/mooha76/Kofee/config"
+	domain "github.com/mooha76/Kofee/model"
+	"github.com/mooha76/Kofee/pb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

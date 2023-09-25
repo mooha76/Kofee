@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	model "github.com/mooha76/GoGrpcAuth/model"
+	model "github.com/mooha76/Kofee/model"
 )
 
 type UserClient interface {

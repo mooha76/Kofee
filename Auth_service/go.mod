@@ -1,4 +1,4 @@
-module github.com/mooha76/GoGrpcAuth
+module github.com/mooha76/Kofee
 
 go 1.20
 

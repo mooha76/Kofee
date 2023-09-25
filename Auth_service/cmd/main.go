@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/mooha76/GoGrpcAuth/config"
-	"github.com/mooha76/GoGrpcAuth/di"
+	"github.com/mooha76/Kofee/config"
+	"github.com/mooha76/Kofee/di"
 )
 
 func main() {
