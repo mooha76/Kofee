@@ -1,0 +1,45 @@
+syntax = "proto3";
+package pb;
+option go_package = "./pb";
+
+
+
+service Merchan_PURCHISE_SERVICE {
+    rpc SEND_MERCHAN_API_PURCHASE_REQ(Request) returns (Merchan_PURCHISE_RESPONSE){};
+    
+}
+
+
+message Request {
+    string schema_version = 1;
+    string request_id = 2;
+    string timestamp = 3;
+    string channel_name = 4;
+    string service_name = 5;
+    ServiceParams service_params = 6;
+}
+
+message ServiceParams {
+    string merchant_uid = 1;
+    string payment_method = 2;
+    string api_key = 3;
+    string api_user_id = 4;
+    PayerInfo payer_info = 5;
+    TransactionInfo transaction_info = 6;
+}
+
+message PayerInfo {
+    string account_no = 1;
+}
+
+message TransactionInfo {
+    string reference_id = 1;
+    string invoice_id = 2;
+    string amount = 3;
+    string currency = 4;
+    string description = 5;
+}
+
+message Merchan_PURCHISE_RESPONSE{
+    string status = 1;
+}
