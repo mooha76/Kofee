@@ -2,9 +2,9 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	handler "github.com/mooha76/GoGrpcProxy/api/handler/interfaces"
-	"github.com/mooha76/GoGrpcProxy/api/routes"
-	"github.com/mooha76/GoGrpcProxy/config"
+	handler "github.com/mooha76/Kofee/Proxy_Service/api/handler/interfaces"
+	"github.com/mooha76/Kofee/Proxy_Service/api/routes"
+	"github.com/mooha76/Kofee/Proxy_Service/config"
 )
 
 type Server struct {

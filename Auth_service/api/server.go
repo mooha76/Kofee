@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/mooha76/Kofee/config"
-	"github.com/mooha76/Kofee/pb"
+	"github.com/mooha76/Kofee/Auth_service/config"
+	"github.com/mooha76/Kofee/Auth_service/pb"
 	"google.golang.org/grpc"
 )
 

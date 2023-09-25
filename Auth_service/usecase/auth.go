@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	client "github.com/mooha76/Kofee/client/interface"
-	domain "github.com/mooha76/Kofee/model"
+	client "github.com/mooha76/Kofee/Auth_service/client/interface"
+	domain "github.com/mooha76/Kofee/Auth_service/model"
 
-	interfaces "github.com/mooha76/Kofee/usecase/interface"
-	"github.com/mooha76/Kofee/utils"
+	interfaces "github.com/mooha76/Kofee/Auth_service/usecase/interface"
+	"github.com/mooha76/Kofee/Auth_service/utils"
 )
 
 type authUsecase struct {

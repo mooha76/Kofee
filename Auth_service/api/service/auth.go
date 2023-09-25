@@ -3,11 +3,11 @@ package service
 import (
 	"context"
 
-	model "github.com/mooha76/Kofee/model"
-	"github.com/mooha76/Kofee/pb"
+	model "github.com/mooha76/Kofee/Auth_service/model"
+	"github.com/mooha76/Kofee/Auth_service/pb"
 
-	//"github.com/mooha76/Kofee/token"
-	usecase "github.com/mooha76/Kofee/usecase/interface"
+	//"github.com/mooha76/Kofee/Auth_service/token"
+	usecase "github.com/mooha76/Kofee/Auth_service/usecase/interface"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

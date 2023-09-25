@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mooha76/GoGrpcProxy/utils/request"
+	"github.com/mooha76/Kofee/Proxy_Service/utils/request"
 )
 
 const (

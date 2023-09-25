@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mooha76/GoGrpcProxy/api/handler/interfaces"
-	client "github.com/mooha76/GoGrpcProxy/client/interfaces"
-	"github.com/mooha76/GoGrpcProxy/model"
-	"github.com/mooha76/GoGrpcProxy/utils/response"
+	"github.com/mooha76/Kofee/Proxy_Service/api/handler/interfaces"
+	client "github.com/mooha76/Kofee/Proxy_Service/client/interfaces"
+	"github.com/mooha76/Kofee/Proxy_Service/model"
+	"github.com/mooha76/Kofee/Proxy_Service/utils/response"
 )
 
 type authHandler struct {

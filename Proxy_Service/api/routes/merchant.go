@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	handler "github.com/mooha76/GoGrpcProxy/api/handler/interfaces"
+	handler "github.com/mooha76/Kofee/Proxy_Service/api/handler/interfaces"
 )
 
 func SetupMerchantRoutes(merchant *gin.RouterGroup,

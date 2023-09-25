@@ -4,14 +4,14 @@ package di
 
 import (
 	"github.com/google/wire"
-	"github.com/mooha76/Kofee/api"
-	"github.com/mooha76/Kofee/api/service"
-	"github.com/mooha76/Kofee/client"
-	"github.com/mooha76/Kofee/config"
+	"github.com/mooha76/Kofee/Auth_service/api"
+	"github.com/mooha76/Kofee/Auth_service/api/service"
+	"github.com/mooha76/Kofee/Auth_service/client"
+	"github.com/mooha76/Kofee/Auth_service/config"
 
-	//"github.com/mooha76/Kofee/db"
+	//"github.com/mooha76/Kofee/Auth_service/db"
 
-	"github.com/mooha76/Kofee/usecase"
+	"github.com/mooha76/Kofee/Auth_service/usecase"
 )
 
 func InitializeServices(cfg *config.Config) (*api.ServiceServer, error) {

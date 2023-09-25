@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/mooha76/GoGrpcProxy/config"
-	"github.com/mooha76/GoGrpcProxy/di"
+	"github.com/mooha76/Kofee/Proxy_Service/config"
+	"github.com/mooha76/Kofee/Proxy_Service/di"
 )
 
 func main() {

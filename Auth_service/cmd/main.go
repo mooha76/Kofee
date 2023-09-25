@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/mooha76/Kofee/config"
-	"github.com/mooha76/Kofee/di"
+	"github.com/mooha76/Kofee/Auth_service/config"
+	"github.com/mooha76/Kofee/Auth_service/di"
 )
 
 func main() {

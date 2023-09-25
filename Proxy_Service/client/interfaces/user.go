@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/mooha76/GoGrpcProxy/utils/response"
+	"github.com/mooha76/Kofee/Proxy_Service/utils/response"
 )
 
 type UserClient interface {

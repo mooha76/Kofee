@@ -3,10 +3,10 @@ package client
 import (
 	"context"
 
-	"github.com/mooha76/GoGrpcProxy/client/interfaces"
-	"github.com/mooha76/GoGrpcProxy/config"
-	"github.com/mooha76/GoGrpcProxy/pb"
-	"github.com/mooha76/GoGrpcProxy/utils/response"
+	"github.com/mooha76/Kofee/Proxy_Service/client/interfaces"
+	"github.com/mooha76/Kofee/Proxy_Service/config"
+	"github.com/mooha76/Kofee/Proxy_Service/pb"
+	"github.com/mooha76/Kofee/Proxy_Service/utils/response"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

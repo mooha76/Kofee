@@ -1,4 +1,4 @@
-module github.com/mooha76/Kofee
+module github.com/mooha76/Kofee/Auth_service
 
 go 1.20
 

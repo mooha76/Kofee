@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	model "github.com/mooha76/Kofee/model"
+	model "github.com/mooha76/Kofee/Auth_service/model"
 )
 
 type UserClient interface {

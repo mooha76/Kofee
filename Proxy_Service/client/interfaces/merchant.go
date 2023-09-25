@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/mooha76/GoGrpcProxy/model"
+	"github.com/mooha76/Kofee/Proxy_Service/model"
 )
 
 type MerchantClient interface {

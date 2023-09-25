@@ -4,10 +4,10 @@ package di
 
 import (
 	"github.com/google/wire"
-	"github.com/mooha76/GoGrpcProxy/api"
-	"github.com/mooha76/GoGrpcProxy/api/handler"
-	"github.com/mooha76/GoGrpcProxy/client"
-	"github.com/mooha76/GoGrpcProxy/config"
+	"github.com/mooha76/Kofee/Proxy_Service/api"
+	"github.com/mooha76/Kofee/Proxy_Service/api/handler"
+	"github.com/mooha76/Kofee/Proxy_Service/client"
+	"github.com/mooha76/Kofee/Proxy_Service/config"
 )
 
 func InitializeApi(cfg *config.Config) (*api.Server, error) {

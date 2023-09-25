@@ -1,4 +1,4 @@
-module github.com/mooha76/GoGrpcProxy
+module github.com/mooha76/Kofee/Proxy_Service
 
 go 1.20
 
