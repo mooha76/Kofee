@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/mooha76/GoUser_Service-Grpc/model"
+	"github.com/mooha76/Kofee/User_Service/model"
 )
 
 type UserRepository interface {

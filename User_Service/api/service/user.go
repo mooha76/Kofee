@@ -3,12 +3,12 @@ package service
 import (
 	"context"
 
-	"github.com/mooha76/GoUser_Service-Grpc/model"
-	"github.com/mooha76/GoUser_Service-Grpc/pb"
-	usecase "github.com/mooha76/GoUser_Service-Grpc/usecase/interfaces"
-	"github.com/mooha76/GoUser_Service-Grpc/utils"
+	"github.com/mooha76/Kofee/User_Service/model"
+	"github.com/mooha76/Kofee/User_Service/pb"
+	usecase "github.com/mooha76/Kofee/User_Service/usecase/interfaces"
+	"github.com/mooha76/Kofee/User_Service/utils"
 
-	//"github.com/mooha76/GoUser_Service-Grpc/utils/response"
+	//"github.com/mooha76/Kofee/User_Service/utils/response"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

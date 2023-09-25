@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/mooha76/GoUser_Service-Grpc/model"
-	"github.com/mooha76/GoUser_Service-Grpc/repository/interfaces"
+	"github.com/mooha76/Kofee/User_Service/model"
+	"github.com/mooha76/Kofee/User_Service/repository/interfaces"
 	"gorm.io/gorm"
 )
 

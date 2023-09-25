@@ -3,9 +3,9 @@ package usecase
 import (
 	"context"
 
-	"github.com/mooha76/GoUser_Service-Grpc/model"
-	repo "github.com/mooha76/GoUser_Service-Grpc/repository/interfaces"
-	"github.com/mooha76/GoUser_Service-Grpc/usecase/interfaces"
+	"github.com/mooha76/Kofee/User_Service/model"
+	repo "github.com/mooha76/Kofee/User_Service/repository/interfaces"
+	"github.com/mooha76/Kofee/User_Service/usecase/interfaces"
 )
 
 type userUsecase struct {

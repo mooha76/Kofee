@@ -1,4 +1,4 @@
-module github.com/mooha76/GoUser_Service-Grpc
+module github.com/mooha76/Kofee/User_Service
 
 go 1.20
 

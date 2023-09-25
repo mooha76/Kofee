@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/mooha76/GoUser_Service-Grpc/config"
-	"github.com/mooha76/GoUser_Service-Grpc/pb"
+	"github.com/mooha76/Kofee/User_Service/config"
+	"github.com/mooha76/Kofee/User_Service/pb"
 	"google.golang.org/grpc"
 )
 

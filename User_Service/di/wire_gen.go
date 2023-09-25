@@ -7,12 +7,12 @@
 package di
 
 import (
-	"github.com/mooha76/GoUser_Service-Grpc/api"
-	"github.com/mooha76/GoUser_Service-Grpc/api/service"
-	"github.com/mooha76/GoUser_Service-Grpc/config"
-	"github.com/mooha76/GoUser_Service-Grpc/db"
-	"github.com/mooha76/GoUser_Service-Grpc/repository"
-	"github.com/mooha76/GoUser_Service-Grpc/usecase"
+	"github.com/mooha76/Kofee/User_Service/api"
+	"github.com/mooha76/Kofee/User_Service/api/service"
+	"github.com/mooha76/Kofee/User_Service/config"
+	"github.com/mooha76/Kofee/User_Service/db"
+	"github.com/mooha76/Kofee/User_Service/repository"
+	"github.com/mooha76/Kofee/User_Service/usecase"
 )
 
 // Injectors from wire.go:
