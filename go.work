@@ -1,0 +1,8 @@
+go 1.20
+
+use (
+	./Auth_service
+	./Proxy_Service
+	./User_Service
+	
+)
