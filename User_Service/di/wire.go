@@ -15,7 +15,7 @@ import (
 func InitializeService(cfg *config.Config) (*api.ServiceServer, error) {
 
 	wire.Build(
-		db.ConnectDatabase,
+		db.InitializeSQLXDatabase,
 		repository.NewUserRepository,
 		usecase.NewUserUsecase,
 		service.NewUserServiceServer,
