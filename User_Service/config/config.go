@@ -9,6 +9,7 @@ type Config struct {
 	DBName     string `mapstructure:"DB_NAME"`
 	DBUser     string `mapstructure:"DB_USER"`
 	DBPassword string `mapstructure:"DB_PASSWORD"`
+	Sslmode    string `mapstructure:"Sslmode"`
 }
 
 var envs = []string{
