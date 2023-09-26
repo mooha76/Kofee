@@ -38,12 +38,12 @@ func (c *userDatabase) FindUserByPhone(ctx context.Context, phone string) (user 
 
 // Save a new user
 func (c *userDatabase) SaveUser(ctx context.Context, user model.User) (uint64, error) {
-	query := `INSERT INTO users ( first_name, last_name, age, email, phone, password,created_at) 
-	VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`
+	query := `INSERT INTO users ( first_name, middle_name , last_name, age, gender, email, phone, account , password,created_at) 
+	VALUES ($1, $2, $3, $4, $5, $6, $7 ,$8 ,$9 ,$10 ) RETURNING id`
 
 	createdAt := time.Now()
-	err := c.db.Raw(query, user.FirstName, user.LastName,
-		user.Age, user.Email, user.Phone, user.Password, createdAt).Scan(&user).Error
+	err := c.db.Raw(query, user.FirstName, user.MiddleName, user.LastName,
+		user.Age, user.Gender, user.Email, user.Phone, user.Account, user.Password, createdAt).Scan(&user).Error
 
 	return user.ID, err
 }

@@ -27,12 +27,15 @@ func NewAuthServiceServer(usecase usecase.AuthUseCase) pb.AuthServiceServer {
 func (c *authServiceServer) UserSignup(ctx context.Context, req *pb.UserSignupRequest) (*pb.UserSignupResponse, error) {
 
 	signupRequest := model.UserSignupRequest{
-		FirstName: req.GetFirstName(),
-		LastName:  req.GetLastName(),
-		Age:       req.GetAge(),
-		Email:     req.GetEmail(),
-		Phone:     req.GetPhone(),
-		Password:  req.GetPassword(),
+		FirstName:  req.GetFirstName(),
+		MiddleName: req.GetMiddleName(),
+		LastName:   req.GetLastName(),
+		Age:        req.GetAge(),
+		Gender:     req.GetGender(),
+		Email:      req.GetEmail(),
+		Phone:      req.GetPhone(),
+		Account:    req.GetAccount(),
+		Password:   req.GetPassword(),
 	}
 
 	UserId, err := c.usecase.UserSignup(ctx, signupRequest)

@@ -1,0 +1,86 @@
+version: '3.8'
+services:
+  # api gateway container
+  api-gateway:
+    build:
+      context: ./Proxy_Service
+      dockerfile: Dockerfile
+    image: kofee/proxy-service
+    ports:
+      - ${PORT}${PORT}
+    env_file:
+      - .env
+    networks:
+      - kofee-servie
+    restart: always
+
+  # auth db container
+  auth-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${AUTH_DB_USER}
+      - POSTGRES_PASSWORD=${AUTH_DB_PASSWORD}
+      - POSTGRES_DB=${AUTH_DB_NAME}
+    networks:
+      - kofee-servie
+    volumes:
+      - auth-database:/var/lib/postgresql/data
+    restart: always
+
+  # auth service container
+  auth-service:
+    build:
+      context: ./Auth_service
+      dockerfile: Dockerfile
+    image: kofee/auth-service
+    env_file:
+      - .env
+    environment:
+      - AUTH_DB_HOST=auth-db
+    networks:
+      - kofee-servie
+    restart: always
+    depends_on:
+      - auth-db
+
+  # user database
+  user-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${USER_DB_USER}
+      - POSTGRES_PASSWORD=${USER_DB_PASSWORD}
+      - POSTGRES_DB=${USER_DB_NAME}
+    networks:
+      - kofee-servie
+    volumes:
+      - user-database:/var/lib/postgresql/data
+    restart: always
+
+  # user service container
+  user-service:
+    build:
+      context: ./User_Service
+      dockerfile: Dockerfile
+    image: Kofee/user-service
+    env_file:
+      - .env
+    environment:
+      - USER_DB_HOST=user-db
+    networks:
+      - kofee-servie
+    restart: always
+    depends_on:
+      -  user-db
+  
+ 
+
+volumes:
+  auth-database:
+    driver: local
+  user-database:
+    driver: local
+
+networks:
+  kofee-servie:
+    driver: bridge
+

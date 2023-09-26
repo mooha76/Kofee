@@ -31,12 +31,15 @@ func NewAuthClient(cfg *config.Config) (interfaces.AuthClient, error) {
 func (c *authClient) UserSignup(ctx context.Context, req model.UserSignupRequest) (otpID string, err error) {
 
 	res, err := c.client.UserSignup(ctx, &pb.UserSignupRequest{
-		FirstName: req.FirstName,
-		LastName:  req.LastName,
-		Age:       req.Age,
-		Email:     req.Email,
-		Phone:     req.Phone,
-		Password:  req.Password,
+		FirstName:  req.FirstName,
+		MiddleName: req.MiddleName,
+		LastName:   req.LastName,
+		Age:        req.Age,
+		Gender:     req.Gender,
+		Email:      req.Email,
+		Phone:      req.Phone,
+		Account:    req.Account,
+		Password:   req.Password,
 	})
 	if err != nil {
 		return otpID, err
