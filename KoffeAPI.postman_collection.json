@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Mohamed\",\r\n    \"lastName\": \"Frah\",\r\n    \"age\": \"23\",\r\n    \"email\": \"mfarah@ebirr.com\",\r\n    \"phone\": \"251974657787\",\r\n \"user_name\": \"mooha\",\r\n \"Password\": \"123456789abc@\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Mohamed\",\r\n    \"lastName\": \"Frah\",\r\n    \"age\": \"23\",\r\n    \"email\": \"mfarah@ebirr.com\",\r\n    \"phone\": \"251974657787\",\r\n  \"Password\": \"123456789abc@\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
