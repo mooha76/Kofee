@@ -5,6 +5,7 @@ import (
 
 	model "github.com/mooha76/Kofee/Auth_service/model"
 	"github.com/mooha76/Kofee/Auth_service/pb"
+	"github.com/mooha76/Kofee/Auth_service/utils"
 
 	//"github.com/mooha76/Kofee/Auth_service/token"
 	usecase "github.com/mooha76/Kofee/Auth_service/usecase/interface"
@@ -13,19 +14,21 @@ import (
 )
 
 type authServiceServer struct {
-	usecase usecase.AuthUseCase
+	userusecase    usecase.AuthUseCase
+	partnerusecase usecase.PartnerUseCase
 	pb.UnimplementedAuthServiceServer
 }
 
-func NewAuthServiceServer(usecase usecase.AuthUseCase) pb.AuthServiceServer {
+func NewAuthServiceServer(userusecase usecase.AuthUseCase, partnerusecase usecase.PartnerUseCase) pb.AuthServiceServer {
 	return &authServiceServer{
-		usecase: usecase,
+		userusecase:    userusecase,
+		partnerusecase: partnerusecase,
 	}
 }
 
 // User Sginup
 func (c *authServiceServer) UserSignup(ctx context.Context, req *pb.UserSignupRequest) (*pb.UserSignupResponse, error) {
-
+	utils.LogMessage(utils.Cyan, "SaveUser Invoked")
 	signupRequest := model.UserSignupRequest{
 		FirstName:  req.GetFirstName(),
 		MiddleName: req.GetMiddleName(),
@@ -38,11 +41,11 @@ func (c *authServiceServer) UserSignup(ctx context.Context, req *pb.UserSignupRe
 		Password:   req.GetPassword(),
 	}
 
-	UserId, err := c.usecase.UserSignup(ctx, signupRequest)
+	UserId, err := c.userusecase.UserSignup(ctx, signupRequest)
 
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "%s", err.Error())
 	}
 
-	return &pb.UserSignupResponse{UserId: UserId}, nil
+	return &pb.UserSignupResponse{User_Id: UserId}, nil
 }

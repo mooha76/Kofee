@@ -4,5 +4,6 @@ use (
 	./Auth_service
 	./Proxy_Service
 	./User_Service
+	./Core
 	
 )

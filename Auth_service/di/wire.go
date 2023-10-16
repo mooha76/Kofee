@@ -21,8 +21,14 @@ func InitializeServices(cfg *config.Config) (*api.ServiceServer, error) {
 		//repository.NewAuthRepository,
 		//otp.NewTwilioOtpAuth,
 		//token.NewJWTAuth,
-		client.NewUserClient, usecase.NewAuthUsecase,
+		client.NewUserClient,
+		usecase.NewAuthUsecase,
+
+		client.NewPartnerClient,
+		usecase.NewPartnerUsecase,
+
 		service.NewAuthServiceServer,
+
 		api.NewServerGRPC,
 	)
 	return &api.ServiceServer{}, nil

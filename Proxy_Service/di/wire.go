@@ -16,10 +16,12 @@ func InitializeApi(cfg *config.Config) (*api.Server, error) {
 		client.NewAuthClient,
 		client.NewUserClient,
 		client.NewMerchantClient,
+		client.NewPartnerClient,
 
 		handler.NewAuthHandler,
 		handler.NewUserHandler,
 		handler.NewMerchantHandler,
+		handler.NewPartnerHandler,
 
 		api.NewServerHTTP,
 	)

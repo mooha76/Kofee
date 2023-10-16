@@ -18,14 +18,14 @@ func NewUserUsecase(repo repo.UserRepository) interfaces.UserUsecase {
 	}
 }
 
-func (c *userUsecase) SaveUser(ctx context.Context, user model.User) (userID uint64, err error) {
+func (c *userUsecase) SaveUser(ctx context.Context, user model.Users) (userID uint64, err error) {
 
 	return c.repo.SaveUser(ctx, user)
 }
 
-func (c *userUsecase) FindUserByEmail(ctx context.Context, email string) (model.User, error) {
+func (c *userUsecase) FindUserByEmail(ctx context.Context, email string) (model.Users, error) {
 	return c.repo.FindUserByEmail(ctx, email)
 }
-func (c *userUsecase) FindUserByPhone(ctx context.Context, phone string) (model.User, error) {
+func (c *userUsecase) FindUserByPhone(ctx context.Context, phone string) (model.Users, error) {
 	return c.repo.FindUserByPhone(ctx, phone)
 }

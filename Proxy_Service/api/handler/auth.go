@@ -22,7 +22,7 @@ func NewAuthHandler(client client.AuthClient) interfaces.AuthHandler {
 
 func (c *authHandler) UserSignup(ctx *gin.Context) {
 
-	var body model.UserSignupRequest
+	var body model.PartnerSingUpRequest
 
 	if err := ctx.ShouldBindJSON(&body); err != nil {
 		response.ErrorResponse(ctx, "failed bind inputs", err, body)

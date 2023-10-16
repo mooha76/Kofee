@@ -7,6 +7,7 @@ import (
 	"github.com/mooha76/Kofee/Proxy_Service/config"
 	"github.com/mooha76/Kofee/Proxy_Service/model"
 	"github.com/mooha76/Kofee/Proxy_Service/pb"
+	"github.com/mooha76/Kofee/Proxy_Service/utils"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -28,21 +29,13 @@ func NewAuthClient(cfg *config.Config) (interfaces.AuthClient, error) {
 	}, nil
 }
 
-func (c *authClient) UserSignup(ctx context.Context, req model.UserSignupRequest) (otpID string, err error) {
+func (c *authClient) UserSignup(ctx context.Context, req model.PartnerSingUpRequest) (ID string, err error) {
 
-	res, err := c.client.UserSignup(ctx, &pb.UserSignupRequest{
-		FirstName:  req.FirstName,
-		MiddleName: req.MiddleName,
-		LastName:   req.LastName,
-		Age:        req.Age,
-		Gender:     req.Gender,
-		Email:      req.Email,
-		Phone:      req.Phone,
-		Account:    req.Account,
-		Password:   req.Password,
-	})
+	res, err := c.client.UserSingUp(ctx, &pb.UserSignupRequest{})
+	utils.LogMessage(utils.Cyan, "User SingUp Request")
 	if err != nil {
-		return otpID, err
+		return ID, err
 	}
+
 	return res.GetUser_Id(), nil
 }

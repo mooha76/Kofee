@@ -7,5 +7,5 @@ import (
 )
 
 type AuthClient interface {
-	UserSignup(ctx context.Context, req model.UserSignupRequest) (otpID string, err error)
+	UserSignup(ctx context.Context, req model.PartnerSingUpRequest) (otpID string, err error)
 }

@@ -1,16 +1,15 @@
 package model
 
 type UserSignupRequest struct {
-	FirstName  string `json:"first_name" binding:"required"`
-	MiddleName string `json:"middle_name" binding:"required"`
-	LastName   string `json:"last_name" binding:"required"`
-	Age        uint64 `json:"age" binding:"required"`
-	Gender     string `json:"gender" binding:"required,min=4,max=20"`
-	Email      string `json:"email" binding:"required,email"`
-	Phone      string `json:"phone" binding:"required,min=8,max=20"`
-	Account    string `json:"account" binding:"required,min=8,max=20"`
-
-	Password string `json:"password" binding:"required,min=6,max=30"`
+	FirstName  string `json:"first_name,omitempty" db:"first_name" binding:"required,min=2,max=50"`
+	MiddleName string `json:"middle_name" db:"middle_name" binding:"required,min=2,max=50"`
+	LastName   string `json:"last_name" db:"last_name" binding:"required,min=1,max=50"`
+	Age        uint64 `json:"age" db:"age" binding:"required,numeric"`
+	Gender     string `json:"gender" db:"gender" binding:"required,min=4,max=20"`
+	Email      string `json:"email" db:"email" binding:"required,email"`
+	Phone      string `json:"phone" db:"phone" binding:"required,min=8,max=10"`
+	Account    string `json:"account" db:"account" binding:"required,min=8,max=10"`
+	Password   string `json:"password" db:"password" binding:"required"`
 }
 
 type UserLoginRequest struct {

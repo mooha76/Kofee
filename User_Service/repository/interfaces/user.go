@@ -7,8 +7,8 @@ import (
 )
 
 type UserRepository interface {
-	FindUserByEmail(ctx context.Context, email string) (model.User, error)
-	FindUserByPhone(ctx context.Context, phone string) (model.User, error)
+	FindUserByEmail(ctx context.Context, email string) (model.Users, error)
+	FindUserByPhone(ctx context.Context, phone string) (model.Users, error)
 
-	SaveUser(ctx context.Context, user model.User) (userID uint64, err error)
+	SaveUser(ctx context.Context, user model.Users) (userID uint64, err error)
 }

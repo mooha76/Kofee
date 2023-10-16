@@ -7,7 +7,7 @@ import (
 )
 
 type UserUsecase interface {
-	SaveUser(ctx context.Context, user model.User) (userID uint64, err error)
-	FindUserByPhone(ctx context.Context, phone string) (model.User, error)
-	FindUserByEmail(ctx context.Context, email string) (model.User, error)
+	SaveUser(ctx context.Context, user model.Users) (userID uint64, err error)
+	FindUserByPhone(ctx context.Context, phone string) (model.Users, error)
+	FindUserByEmail(ctx context.Context, email string) (model.Users, error)
 }

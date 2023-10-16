@@ -22,7 +22,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthServiceClient interface {
-	UserSignup(ctx context.Context, in *UserSignupRequest, opts ...grpc.CallOption) (*UserSignupResponse, error)
+	UserSingUp(ctx context.Context, in *UserSignupRequest, opts ...grpc.CallOption) (*UserSignupResponse, error)
+	// rpc PartnerSingUp(PartnerSingUpRequest) returns (PartnerSingUpResponse) {};
+	PartnerSingUp(ctx context.Context, in *PartnerSingUpRequest, opts ...grpc.CallOption) (*PartnerSingUpResponse, error)
 }
 
 type authServiceClient struct {
@@ -33,9 +35,18 @@ func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
 	return &authServiceClient{cc}
 }
 
-func (c *authServiceClient) UserSignup(ctx context.Context, in *UserSignupRequest, opts ...grpc.CallOption) (*UserSignupResponse, error) {
+func (c *authServiceClient) UserSingUp(ctx context.Context, in *UserSignupRequest, opts ...grpc.CallOption) (*UserSignupResponse, error) {
 	out := new(UserSignupResponse)
-	err := c.cc.Invoke(ctx, "/pb.AuthService/UserSignup", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.AuthService/UserSingUp", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) PartnerSingUp(ctx context.Context, in *PartnerSingUpRequest, opts ...grpc.CallOption) (*PartnerSingUpResponse, error) {
+	out := new(PartnerSingUpResponse)
+	err := c.cc.Invoke(ctx, "/pb.AuthService/PartnerSingUp", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +57,9 @@ func (c *authServiceClient) UserSignup(ctx context.Context, in *UserSignupReques
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
 type AuthServiceServer interface {
-	UserSignup(context.Context, *UserSignupRequest) (*UserSignupResponse, error)
+	UserSingUp(context.Context, *UserSignupRequest) (*UserSignupResponse, error)
+	// rpc PartnerSingUp(PartnerSingUpRequest) returns (PartnerSingUpResponse) {};
+	PartnerSingUp(context.Context, *PartnerSingUpRequest) (*PartnerSingUpResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -54,8 +67,11 @@ type AuthServiceServer interface {
 type UnimplementedAuthServiceServer struct {
 }
 
-func (UnimplementedAuthServiceServer) UserSignup(context.Context, *UserSignupRequest) (*UserSignupResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UserSignup not implemented")
+func (UnimplementedAuthServiceServer) UserSingUp(context.Context, *UserSignupRequest) (*UserSignupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserSingUp not implemented")
+}
+func (UnimplementedAuthServiceServer) PartnerSingUp(context.Context, *PartnerSingUpRequest) (*PartnerSingUpResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PartnerSingUp not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -70,20 +86,38 @@ func RegisterAuthServiceServer(s grpc.ServiceRegistrar, srv AuthServiceServer) {
 	s.RegisterService(&AuthService_ServiceDesc, srv)
 }
 
-func _AuthService_UserSignup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AuthService_UserSingUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserSignupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).UserSignup(ctx, in)
+		return srv.(AuthServiceServer).UserSingUp(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.AuthService/UserSignup",
+		FullMethod: "/pb.AuthService/UserSingUp",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).UserSignup(ctx, req.(*UserSignupRequest))
+		return srv.(AuthServiceServer).UserSingUp(ctx, req.(*UserSignupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_PartnerSingUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PartnerSingUpRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).PartnerSingUp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.AuthService/PartnerSingUp",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).PartnerSingUp(ctx, req.(*PartnerSingUpRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -96,8 +130,12 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "UserSignup",
-			Handler:    _AuthService_UserSignup_Handler,
+			MethodName: "UserSingUp",
+			Handler:    _AuthService_UserSingUp_Handler,
+		},
+		{
+			MethodName: "PartnerSingUp",
+			Handler:    _AuthService_PartnerSingUp_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

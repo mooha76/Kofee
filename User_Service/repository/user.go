@@ -20,7 +20,7 @@ func NewUserRepository(db *sqlx.DB) interfaces.UserRepository {
 	}
 }
 
-func (c *userDatabase) FindUserByEmail(ctx context.Context, email string) (user model.User, err error) {
+func (c *userDatabase) FindUserByEmail(ctx context.Context, email string) (user model.Users, err error) {
 	query := `SELECT * FROM users WHERE email = $1`
 
 	err = c.db.GetContext(ctx, &user, query, email)
@@ -35,7 +35,7 @@ func (c *userDatabase) FindUserByEmail(ctx context.Context, email string) (user 
 	return user, nil
 }
 
-func (c *userDatabase) FindUserByPhone(ctx context.Context, phone string) (user model.User, err error) {
+func (c *userDatabase) FindUserByPhone(ctx context.Context, phone string) (user model.Users, err error) {
 
 	quary := `SELECT * FROM users WHERE phone = $1`
 	err = c.db.GetContext(ctx, &user, quary, phone)
@@ -50,7 +50,7 @@ func (c *userDatabase) FindUserByPhone(ctx context.Context, phone string) (user 
 }
 
 // Save a new user
-func (c *userDatabase) SaveUser(ctx context.Context, user model.User) (uint64, error) {
+func (c *userDatabase) SaveUser(ctx context.Context, user model.Users) (uint64, error) {
 	query := `
         INSERT INTO users (first_name, middle_name, last_name, age, gender, email, phone, account, password, created_at) 
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
@@ -60,7 +60,16 @@ func (c *userDatabase) SaveUser(ctx context.Context, user model.User) (uint64, e
 	var userID uint64
 
 	err := c.db.QueryRowContext(ctx, query,
-		&user,
+		user.FirstName,
+		user.MiddleName,
+		user.LastName,
+		user.Age,
+		user.Gender,
+		user.Email,
+		user.Phone,
+		user.Account,
+		user.Password,
+		user.CreatedAt,
 	).Scan(&userID)
 
 	if err != nil {

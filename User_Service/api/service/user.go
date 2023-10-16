@@ -25,7 +25,7 @@ func NewUserServiceServer(usecase usecase.UserUsecase) pb.UserServiceServer {
 }
 func (c *UserServiceServer) SaveUser(ctx context.Context, req *pb.SaveUserRequest) (*pb.SaveUserResponse, error) {
 	utils.LogMessage(utils.Cyan, "SaveUser Invoked")
-	userID, err := c.usecase.SaveUser(context.Background(), model.User{
+	userID, err := c.usecase.SaveUser(context.Background(), model.Users{
 		FirstName:  req.GetFirstName(),
 		MiddleName: req.GetMiddleName(),
 		LastName:   req.GetLastName(),

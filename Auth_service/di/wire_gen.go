@@ -22,7 +22,12 @@ func InitializeServices(cfg *config.Config) (*api.ServiceServer, error) {
 		return nil, err
 	}
 	authUseCase := usecase.NewAuthUsecase(userClient)
-	authServiceServer := service.NewAuthServiceServer(authUseCase)
+	partnerClient, err := client.NewPartnerClient(cfg)
+	if err != nil {
+		return nil, err
+	}
+	partnerUseCase := usecase.NewPartnerUsecase(partnerClient)
+	authServiceServer := service.NewAuthServiceServer(authUseCase, partnerUseCase)
 	serviceServer, err := api.NewServerGRPC(cfg, authServiceServer)
 	if err != nil {
 		return nil, err

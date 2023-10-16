@@ -31,6 +31,11 @@ func InitializeApi(cfg *config.Config) (*api.Server, error) {
 		return nil, err
 	}
 	userHandler := handler.NewUserHandler(userClient)
-	server := api.NewServerHTTP(cfg, authHandler, merchantHandler, userHandler)
+	partnerClient, err := client.NewPartnerClient(cfg)
+	if err != nil {
+		return nil, err
+	}
+	partnerHandler := handler.NewPartnerHandler(partnerClient)
+	server := api.NewServerHTTP(cfg, authHandler, merchantHandler, userHandler, partnerHandler)
 	return server, nil
 }

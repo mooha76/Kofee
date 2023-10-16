@@ -17,7 +17,7 @@ type merchantClient struct {
 
 func NewMerchantClient(cfg *config.Config) (interfaces.MerchantClient, error) {
 
-	gcc, err := grpc.Dial(cfg.MerchantServiceUrl, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	gcc, err := grpc.Dial(cfg.AuthServiceUrl, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, err
 	}

@@ -5,7 +5,9 @@ option go_package = "./pb";
 
 
 service AuthService {
-    rpc UserSignup(UserSignupRequest) returns (UserSignupResponse){};
+    rpc UserSingUp(UserSignupRequest) returns (UserSignupResponse){};
+    //rpc PartnerSingUp(PartnerSingUpRequest) returns (PartnerSingUpResponse) {};
+    rpc PartnerSingUp(PartnerSingUpRequest) returns (PartnerSingUpResponse){};
     
 }
 
@@ -67,3 +69,78 @@ message UserLoginResponse {
     string access_token = 1;
     string refresh_token = 2;
 }
+
+
+
+// save Partner
+message PartnerSingUpRequest {
+    string FIRSTNAME = 1;
+    string MIDDLENAME=2;
+    string LASTNAME = 3;
+    string MOBILE = 4;
+    string ACCOUNTNO =5;
+    uint64 WITHDRAWALREQUESTTYPEID =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string EMAIL = 9;
+    string USERNAME = 10;
+    string PASSWORD = 11;
+
+
+}
+message PartnerSingUpResponse{
+    uint64 PARTNERID = 1;
+}
+
+// find user by email
+message FindPartnerEmailRequest {
+    string EMAIL = 1;
+}
+
+message FindPartnerByEmailResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+
+}
+
+// update user verify
+message UpdatePartnerVerifyRequest {
+    uint64 PARTNERID = 1;
+}
+
+
+// find user by phone
+message FindPartnerByPhoneRequest {
+    string MOBILE = 1;
+}
+message FindPartnerByPhoneResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+}
+

@@ -10,6 +10,16 @@ service UserService {
     rpc FindUserByEmail(FindUserByEmailRequest) returns (FindUserByEmailResponse) {};
     //rpc UpdateUserVerified(UpdateUserVerifyRequest) returns(google.protobuf.Empty){};
     rpc FindUserByPhone(FindUserByPhoneRequest) returns (FindUserByPhoneResponse){};
+
+
+
+    rpc SavePartner(SavePartnerRequest) returns (SavePartnerResponse) {};
+    rpc FindPartnerByEmail(FindPartnerEmailRequest) returns (FindPartnerByEmailResponse) {};
+    rpc FindPartnerByPhone(FindPartnerByPhoneRequest) returns (FindPartnerByPhoneResponse){};
+    
+
+    
+    
 }
 
 message SaveUserRequest {
@@ -64,4 +74,100 @@ message FindUserByPhoneResponse {
     string password = 7;
     bool verified = 8;
     bool block_status = 9;
+}
+
+
+
+
+
+
+
+// save user  .//PartnerService
+message SavePartnerRequest {
+    string FIRSTNAME = 1;
+    string MIDDLENAME=2;
+    string LASTNAME = 3;
+    string MOBILE = 4;
+    string ACCOUNTNO =5;
+    uint64 WITHDRAWALREQUESTTYPEID =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string EMAIL = 9;
+    string USERNAME = 10;
+    string PASSWORD = 11;
+
+
+}
+message SavePartnerResponse{
+    uint64 PARTNERID = 1;
+}
+
+// find user by email
+message FindPartnerEmailRequest {
+    string EMAIL = 1;
+}
+
+message FindPartnerByEmailResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+
+}
+
+// update user verify
+message UpdatePartnerVerifyRequest {
+    uint64 PARTNERID = 1;
+}
+
+
+// find user by phone
+message FindPartnerByPhoneRequest {
+    string MOBILE = 1;
+}
+message FindPartnerByPhoneResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+}
+
+message GetPartnerProfileRequest{
+    uint64 PARTNERID = 1;
+}
+
+message GetPartnerProfileResponse{
+    string FIRSTNAME = 1;
+    string MIDDLENAME=2;
+    string LASTNAME = 3;
+    uint64 MOBILE = 4;
+    string ACCOUNTNO =5;
+    uint64 AGE = 6;
+    string GENDER  = 7;
+    string account =8;
+    string EMAIL = 9;
+    string USERNAME = 10;
+    string PASSWORD = 11;
 }

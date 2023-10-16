@@ -26,6 +26,9 @@ type UserServiceClient interface {
 	FindUserByEmail(ctx context.Context, in *FindUserByEmailRequest, opts ...grpc.CallOption) (*FindUserByEmailResponse, error)
 	// rpc UpdateUserVerified(UpdateUserVerifyRequest) returns(google.protobuf.Empty){};
 	FindUserByPhone(ctx context.Context, in *FindUserByPhoneRequest, opts ...grpc.CallOption) (*FindUserByPhoneResponse, error)
+	SavePartner(ctx context.Context, in *SavePartnerRequest, opts ...grpc.CallOption) (*SavePartnerResponse, error)
+	FindPartnerByEmail(ctx context.Context, in *FindPartnerEmailRequest, opts ...grpc.CallOption) (*FindPartnerByEmailResponse, error)
+	FindPartnerByPhone(ctx context.Context, in *FindPartnerByPhoneRequest, opts ...grpc.CallOption) (*FindPartnerByPhoneResponse, error)
 }
 
 type userServiceClient struct {
@@ -63,6 +66,33 @@ func (c *userServiceClient) FindUserByPhone(ctx context.Context, in *FindUserByP
 	return out, nil
 }
 
+func (c *userServiceClient) SavePartner(ctx context.Context, in *SavePartnerRequest, opts ...grpc.CallOption) (*SavePartnerResponse, error) {
+	out := new(SavePartnerResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserService/SavePartner", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) FindPartnerByEmail(ctx context.Context, in *FindPartnerEmailRequest, opts ...grpc.CallOption) (*FindPartnerByEmailResponse, error) {
+	out := new(FindPartnerByEmailResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserService/FindPartnerByEmail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) FindPartnerByPhone(ctx context.Context, in *FindPartnerByPhoneRequest, opts ...grpc.CallOption) (*FindPartnerByPhoneResponse, error) {
+	out := new(FindPartnerByPhoneResponse)
+	err := c.cc.Invoke(ctx, "/pb.UserService/FindPartnerByPhone", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
@@ -71,6 +101,9 @@ type UserServiceServer interface {
 	FindUserByEmail(context.Context, *FindUserByEmailRequest) (*FindUserByEmailResponse, error)
 	// rpc UpdateUserVerified(UpdateUserVerifyRequest) returns(google.protobuf.Empty){};
 	FindUserByPhone(context.Context, *FindUserByPhoneRequest) (*FindUserByPhoneResponse, error)
+	SavePartner(context.Context, *SavePartnerRequest) (*SavePartnerResponse, error)
+	FindPartnerByEmail(context.Context, *FindPartnerEmailRequest) (*FindPartnerByEmailResponse, error)
+	FindPartnerByPhone(context.Context, *FindPartnerByPhoneRequest) (*FindPartnerByPhoneResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -86,6 +119,15 @@ func (UnimplementedUserServiceServer) FindUserByEmail(context.Context, *FindUser
 }
 func (UnimplementedUserServiceServer) FindUserByPhone(context.Context, *FindUserByPhoneRequest) (*FindUserByPhoneResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindUserByPhone not implemented")
+}
+func (UnimplementedUserServiceServer) SavePartner(context.Context, *SavePartnerRequest) (*SavePartnerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SavePartner not implemented")
+}
+func (UnimplementedUserServiceServer) FindPartnerByEmail(context.Context, *FindPartnerEmailRequest) (*FindPartnerByEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPartnerByEmail not implemented")
+}
+func (UnimplementedUserServiceServer) FindPartnerByPhone(context.Context, *FindPartnerByPhoneRequest) (*FindPartnerByPhoneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPartnerByPhone not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 
@@ -154,6 +196,60 @@ func _UserService_FindUserByPhone_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_SavePartner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SavePartnerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SavePartner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserService/SavePartner",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SavePartner(ctx, req.(*SavePartnerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_FindPartnerByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindPartnerEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).FindPartnerByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserService/FindPartnerByEmail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).FindPartnerByEmail(ctx, req.(*FindPartnerEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_FindPartnerByPhone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindPartnerByPhoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).FindPartnerByPhone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.UserService/FindPartnerByPhone",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).FindPartnerByPhone(ctx, req.(*FindPartnerByPhoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -172,6 +268,18 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindUserByPhone",
 			Handler:    _UserService_FindUserByPhone_Handler,
+		},
+		{
+			MethodName: "SavePartner",
+			Handler:    _UserService_SavePartner_Handler,
+		},
+		{
+			MethodName: "FindPartnerByEmail",
+			Handler:    _UserService_FindPartnerByEmail_Handler,
+		},
+		{
+			MethodName: "FindPartnerByPhone",
+			Handler:    _UserService_FindPartnerByPhone_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

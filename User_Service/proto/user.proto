@@ -3,15 +3,20 @@ syntax = "proto3";
 package pb;
 option go_package = "./pb";
 
-
+//import "google/protobuf/empty.proto";
+//import public "google/protobuf/empty.proto";
 service UserService {
     rpc SaveUser(SaveUserRequest) returns (SaveUserResponse) {};
     rpc FindUserByEmail(FindUserByEmailRequest) returns (FindUserByEmailResponse) {};
+    //rpc UpdateUserVerified(UpdateUserVerifyRequest) returns(google.protobuf.Empty){};
     rpc FindUserByPhone(FindUserByPhoneRequest) returns (FindUserByPhoneResponse){};
+
+    rpc SavePartner(SavePartnerRequest) returns (SavePartnerResponse) {};
+    rpc FindPartnerByEmail(FindPartnerEmailRequest) returns (FindPartnerByEmailResponse) {};
+    rpc FindPartnerByPhone(FindPartnerByPhoneRequest) returns (FindPartnerByPhoneResponse){};
     
 }
 
-// save user
 message SaveUserRequest {
     string first_name = 1;
     string middle_name=2;
@@ -23,13 +28,12 @@ message SaveUserRequest {
     string account =8;
     string user_name = 9;
     string password = 10;
-
 }
+
 message SaveUserResponse{
     uint64 user_id = 1;
 }
 
-// find user by email
 message FindUserByEmailRequest {
     string email = 1;
 }
@@ -51,7 +55,6 @@ message UpdateUserVerifyRequest {
     uint64 user_id = 1;
 }
 
-
 // find user by phone
 message FindUserByPhoneRequest {
     string phone = 1;
@@ -68,14 +71,95 @@ message FindUserByPhoneResponse {
     bool block_status = 9;
 }
 
-message GetUserProfileRequest{
-    uint64 user_id = 1;
+
+
+
+// save user  .//PartnerService
+message SavePartnerRequest {
+    string FIRSTNAME = 1;
+    string MIDDLENAME=2;
+    string LASTNAME = 3;
+    string MOBILE = 4;
+    string ACCOUNTNO =5;
+    uint64 WITHDRAWALREQUESTTYPEID =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string EMAIL = 9;
+    string USERNAME = 10;
+    string PASSWORD = 11;
+
+
+}
+message SavePartnerResponse{
+    uint64 PARTNERID = 1;
 }
 
-message GetUserProfileResponse{
-    string first_name = 2;
-    string last_name = 3;
-    uint64 age = 4;
-    string email = 5;
-    string phone = 6;
+// find user by email
+message FindPartnerEmailRequest {
+    string EMAIL = 1;
+}
+
+message FindPartnerByEmailResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+
+}
+
+// update user verify
+message UpdatePartnerVerifyRequest {
+    uint64 PARTNERID = 1;
+}
+
+
+// find user by phone
+message FindPartnerByPhoneRequest {
+    string MOBILE = 1;
+}
+message FindPartnerByPhoneResponse {
+    uint64 PARTNERID=1;
+    string FIRSTNAME = 2;
+    string MIDDLENAME=3;
+    string LASTNAME = 4;
+    string MOBILE = 5;
+    string ACCOUNTNO =6;
+    uint64 AGE = 7;
+    string GENDER  = 8;
+    string account =9;
+    string EMAIL = 10;
+    string USERNAME = 11;
+    string PASSWORD = 12;
+    bool ISACTIVE  =13;
+    bool ISBLOCKED  =14;
+    bool ISBLACKLIST  = 15;
+}
+
+message GetPartnerProfileRequest{
+    uint64 PARTNERID = 1;
+}
+
+message GetPartnerProfileResponse{
+    string FIRSTNAME = 1;
+    string MIDDLENAME=2;
+    string LASTNAME = 3;
+    uint64 MOBILE = 4;
+    string ACCOUNTNO =5;
+    uint64 AGE = 6;
+    string GENDER  = 7;
+    string account =8;
+    string EMAIL = 9;
+    string USERNAME = 10;
+    string PASSWORD = 11;
 }

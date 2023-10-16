@@ -19,6 +19,13 @@ func InitializeService(cfg *config.Config) (*api.ServiceServer, error) {
 		repository.NewUserRepository,
 		usecase.NewUserUsecase,
 		service.NewUserServiceServer,
+
+		// Partner Injection Initialization
+
+		repository.NewPartnerRepository,
+		usecase.NewPartnerUsecase,
+		service.NewPartnerServiceServer,
+
 		api.NewServerGRPC,
 	)
 	return &api.ServiceServer{}, nil
